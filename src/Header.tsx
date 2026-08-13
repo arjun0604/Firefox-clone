@@ -15,7 +15,7 @@ function Header(){
                         className="absolute h-[30px] w-[30px] left-3 top-1/2 -translate-y-1/2 pointer-events-none"
                     />
                     <input 
-                        className="w-full rounded-[18px] bg-white py-[11px] pr-[11px] pl-[48px] border-none outline-none text-black shadow-sm" 
+                        className="w-full rounded-[18px] bg-[#2B2A3A] py-[11px] pr-[11px] pl-[48px] border-none outline-none text-white shadow-sm" 
                         type="text" 
                         placeholder="Search with Google or enter address"
                     />

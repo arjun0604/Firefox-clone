@@ -1,0 +1,98 @@
+import {
+    Drawer,
+    DrawerContent,
+    DrawerHeader,
+    DrawerTitle,
+    DrawerTrigger,
+    DrawerClose,
+} from "@/components/ui/drawer"
+
+export default function Footer() {
+    return (
+        <div className="fixed bottom-6 right-7">
+            <Drawer swipeDirection="right">
+                <DrawerTrigger className="bg-[#2B2A3A] hover:bg-[#423A5A] transition-colors rounded-xl p-3 text-white flex flex-row items-center gap-2 cursor-pointer shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                        <path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z" />
+                    </svg>
+                    Customize
+                </DrawerTrigger>
+                <DrawerContent className="bg-[#2B2A3A] text-white border-gray-800">
+                    <DrawerClose className="absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none disabled:pointer-events-none cursor-pointer p-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                        <span className="sr-only">Close</span>
+                    </DrawerClose>
+                    <div className=" flex flex-col align-center mx-auto w-full max-w-md mt-15">
+                        <DrawerHeader className="flex flex-row justify-between items-center">
+                            <DrawerTitle className=" text-white">Wallpapers</DrawerTitle>
+                            <a className="cursor-pointer text-sm text-gray-400 hover:text-white transition-colors">Reset to Default</a>
+                        </DrawerHeader>
+                        <div className="p-4 pb-0">
+                            <div className="grid grid-cols-3 grid-rows-2 gap-4">
+                                <button type="button" 
+                                        className="group bg-transparent border-0 p-0 cursor-pointer focus:outline-none" 
+                                >
+                                        <img 
+                                          src="src/assets/wallpapers/animal.jpg"
+                                          alt="Set this animals photo as page background" 
+                                          className="w-full h-24 object-cover rounded-xl shadow-lg group-hover:scale-105 group-hover:brightness-110 transition-all duration-200"
+                                        >
+                                        </img>
+                                        <h3 className="mt-3 text-center text-sm font-medium text-gray-300 font-sans tracking-wide">Animal</h3>
+                                </button>
+                                <button type="button" 
+                                        className="group bg-transparent border-0 p-0 cursor-pointer focus:outline-none" 
+                                >
+                                        <img 
+                                          src="src/assets/wallpapers/mountain.jpeg"
+                                          alt="Set this mountain photo as page background" 
+                                          className="w-full h-24 object-cover rounded-xl shadow-lg group-hover:scale-105 group-hover:brightness-110 transition-all duration-200"
+                                        >
+                                        </img>
+                                        <h3 className="mt-3 text-center text-sm font-medium text-gray-300 font-sans tracking-wide">Mountain</h3>
+                                </button>
+                                <button type="button" 
+                                        className="group bg-transparent border-0 p-0 cursor-pointer focus:outline-none" 
+                                >
+                                        <img 
+                                          src="src/assets/wallpapers/sea.jpg"
+                                          alt="Set this sea photo as page background" 
+                                          className="w-full h-24 object-cover rounded-xl shadow-lg group-hover:scale-105 group-hover:brightness-110 transition-all duration-200"
+                                        >
+                                        </img>
+                                        <h3 className="mt-3 text-center text-sm font-medium text-gray-300 font-sans tracking-wide">Sea</h3>
+                                </button>
+                                <button type="button" 
+                                        className="group bg-transparent border-0 p-0 cursor-pointer focus:outline-none" 
+                                >
+                                        <img 
+                                          src="src/assets/wallpapers/solid.avif"
+                                          alt="Set this solid photo as page background" 
+                                          className="w-full h-24 object-cover rounded-xl shadow-lg group-hover:scale-105 group-hover:brightness-110 transition-all duration-200"
+                                        >
+                                        </img>
+                                        <h3 className="mt-3 text-center text-sm font-medium text-gray-300 font-sans tracking-wide">Solid</h3>
+                                </button>
+
+                                <button type="button" 
+                                        className="group bg-transparent border-0 p-0 cursor-pointer focus:outline-none" 
+                                >
+                                    <div className="flex justify-center items-center border-2 border-dashed border-gray-500 w-full h-24 rounded-xl shadow-lg group-hover:scale-105 group-hover:brightness-110 group-hover:border-gray-300 bg-black/20 hover:bg-black/40 transition-all duration-200">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#e3e3e3">
+                                            <path d="M480-480ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h320v80H200v560h560v-320h80v320q0 33-23.5 56.5T760-120H200Zm40-160h480L570-480 450-320l-90-120-120 160Zm440-320v-80h-80v-80h80v-80h80v80h80v80h-80v80h-80Z"/>
+                                        </svg>
+                                    </div>
+                                    <h3 className="mt-3 text-center text-sm font-medium text-gray-300 font-sans tracking-wide">Upload Image</h3>
+                                </button>
+                            </div>
+                            <br></br>
+                            <hr></hr>
+                            <br></br>
+                            <p className="text-gray-400">Background change controls will go here.</p>
+                        </div>
+                    </div>
+                </DrawerContent>
+            </Drawer>
+        </div>
+    );
+}
