@@ -79,18 +79,18 @@ export default function Footer({ showShortcuts, setShowShortcuts, showStories, s
                     </svg>
                     Customize
                 </DrawerTrigger>
-                <DrawerContent className="bg-[#2B2A3A] text-white border-gray-800 w-full sm:w-125">
+                <DrawerContent className="bg-[#2B2A3A] text-white border-gray-800 w-2/5 sm:w-96 lg:w-125">
                     <DrawerClose className="absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none disabled:pointer-events-none cursor-pointer p-1">
                         <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" /></svg>
                         <span className="sr-only">Close</span>
                     </DrawerClose>
-                    <div className=" flex flex-col align-center mx-auto w-full px-6 mt-15">
-                        <DrawerHeader className="flex flex-row justify-between items-center">
-                            <DrawerTitle className=" text-white">Wallpapers</DrawerTitle>
-                            <a onClick={handleReset} className="cursor-pointer text-sm text-gray-400 hover:text-white transition-colors">Reset to Default</a>
+                    <div className="flex flex-col mx-auto w-full px-2 sm:px-6 mt-10 sm:mt-15">
+                        <DrawerHeader className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-0.5 sm:gap-0">
+                            <DrawerTitle className="text-white text-sm sm:text-base">Wallpapers</DrawerTitle>
+                            <a onClick={handleReset} className="cursor-pointer text-xs text-gray-400 hover:text-white transition-colors">Reset to Default</a>
                         </DrawerHeader>
-                        <div className="p-4 pb-0">
-                            <div className="grid grid-cols-3 grid-rows-2 gap-4">
+                        <div className="p-2 sm:p-4 pb-0">
+                            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-4">
                                 <button type="button"
                                     onClick={() => handleWallpaperSelect("src/assets/wallpapers/animal.jpg")}
                                     className="group bg-transparent border-0 p-0 cursor-pointer focus:outline-none"
@@ -98,10 +98,10 @@ export default function Footer({ showShortcuts, setShowShortcuts, showStories, s
                                     <img
                                         src="src/assets/wallpapers/animal.jpg"
                                         alt="Set this animals photo as page background"
-                                        className="w-full h-24 object-cover rounded-xl shadow-lg group-hover:scale-105 group-hover:brightness-110 transition-all duration-200"
+                                        className="w-full h-14 sm:h-24 object-cover rounded-xl shadow-lg group-hover:scale-105 group-hover:brightness-110 transition-all duration-200"
                                     >
                                     </img>
-                                    <h3 className="mt-3 text-center text-sm font-medium text-gray-300 font-sans tracking-wide">Animal</h3>
+                                    <h3 className="mt-1 sm:mt-3 text-center text-xs sm:text-sm font-medium text-gray-300 font-sans tracking-wide">Animal</h3>
                                 </button>
                                 <button type="button"
                                     onClick={() => handleWallpaperSelect("src/assets/wallpapers/mountain.jpeg")}
@@ -110,10 +110,10 @@ export default function Footer({ showShortcuts, setShowShortcuts, showStories, s
                                     <img
                                         src="src/assets/wallpapers/mountain.jpeg"
                                         alt="Set this mountain photo as page background"
-                                        className="w-full h-24 object-cover rounded-xl shadow-lg group-hover:scale-105 group-hover:brightness-110 transition-all duration-200"
+                                        className="w-full h-14 sm:h-24 object-cover rounded-xl shadow-lg group-hover:scale-105 group-hover:brightness-110 transition-all duration-200"
                                     >
                                     </img>
-                                    <h3 className="mt-3 text-center text-sm font-medium text-gray-300 font-sans tracking-wide">Mountain</h3>
+                                    <h3 className="mt-1 sm:mt-3 text-center text-xs sm:text-sm font-medium text-gray-300 font-sans tracking-wide">Mountain</h3>
                                 </button>
                                 <button type="button"
                                     onClick={() => handleWallpaperSelect("src/assets/wallpapers/sea.jpg")}
@@ -122,10 +122,10 @@ export default function Footer({ showShortcuts, setShowShortcuts, showStories, s
                                     <img
                                         src="src/assets/wallpapers/sea.jpg"
                                         alt="Set this sea photo as page background"
-                                        className="w-full h-24 object-cover rounded-xl shadow-lg group-hover:scale-105 group-hover:brightness-110 transition-all duration-200"
+                                        className="w-full h-14 sm:h-24 object-cover rounded-xl shadow-lg group-hover:scale-105 group-hover:brightness-110 transition-all duration-200"
                                     >
                                     </img>
-                                    <h3 className="mt-3 text-center text-sm font-medium text-gray-300 font-sans tracking-wide">Sea</h3>
+                                    <h3 className="mt-1 sm:mt-3 text-center text-xs sm:text-sm font-medium text-gray-300 font-sans tracking-wide">Sea</h3>
                                 </button>
                                 <button type="button"
                                     onClick={() => handleWallpaperSelect("src/assets/wallpapers/solid.avif")}
@@ -134,10 +134,10 @@ export default function Footer({ showShortcuts, setShowShortcuts, showStories, s
                                     <img
                                         src="src/assets/wallpapers/solid.avif"
                                         alt="Set this solid photo as page background"
-                                        className="w-full h-24 object-cover rounded-xl shadow-lg group-hover:scale-105 group-hover:brightness-110 transition-all duration-200"
+                                        className="w-full h-14 sm:h-24 object-cover rounded-xl shadow-lg group-hover:scale-105 group-hover:brightness-110 transition-all duration-200"
                                     >
                                     </img>
-                                    <h3 className="mt-3 text-center text-sm font-medium text-gray-300 font-sans tracking-wide">Solid</h3>
+                                    <h3 className="mt-1 sm:mt-3 text-center text-xs sm:text-sm font-medium text-gray-300 font-sans tracking-wide">Solid</h3>
                                 </button>
 
                                 <input
@@ -151,12 +151,12 @@ export default function Footer({ showShortcuts, setShowShortcuts, showStories, s
                                     onClick={() => fileInputRef.current?.click()}
                                     className="group bg-transparent border-0 p-0 cursor-pointer focus:outline-none"
                                 >
-                                    <div className="flex justify-center items-center border-2 border-dashed border-gray-500 w-full h-24 rounded-xl shadow-lg group-hover:scale-105 group-hover:brightness-110 group-hover:border-gray-300 bg-black/20 hover:bg-black/40 transition-all duration-200">
+                                    <div className="flex justify-center items-center border-2 border-dashed border-gray-500 w-full h-14 sm:h-24 rounded-xl shadow-lg group-hover:scale-105 group-hover:brightness-110 group-hover:border-gray-300 bg-black/20 hover:bg-black/40 transition-all duration-200">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" viewBox="0 -960 960 960" fill="#e3e3e3">
                                             <path d="M480-480ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h320v80H200v560h560v-320h80v320q0 33-23.5 56.5T760-120H200Zm40-160h480L570-480 450-320l-90-120-120 160Zm440-320v-80h-80v-80h80v-80h80v80h80v80h-80v80h-80Z" />
                                         </svg>
                                     </div>
-                                    <h3 className="mt-3 text-center text-sm font-medium text-gray-300 font-sans tracking-wide">Upload Image</h3>
+                                    <h3 className="mt-1 sm:mt-3 text-center text-xs sm:text-sm font-medium text-gray-300 font-sans tracking-wide">Upload Image</h3>
                                 </button>
                             </div>
                             <hr className="mt-7 mb-10 border-gray-700" />
@@ -168,10 +168,10 @@ export default function Footer({ showShortcuts, setShowShortcuts, showStories, s
                                     onChange={setShowShortcuts}
                                 />
                                 <div className="flex-1">
-                                    <h3>Shortcuts</h3>
-                                    <h4 className=" text-gray-400 my-1">Sites you save or visit</h4>
+                                    <h3 className="text-xs sm:text-base">Shortcuts</h3>
+                                    <h4 className="text-gray-400 my-1 text-xs sm:text-sm">Sites you save or visit</h4>
                                     <select
-                                        className="my-1 p-2 w-37 text-white custom-select border border-gray-400 rounded bg-transparent"
+                                        className="my-1 p-1 sm:p-2 w-full sm:w-37 text-white text-xs sm:text-sm custom-select border border-gray-400 rounded bg-transparent"
                                         name="shortcut"
                                         aria-label="Shortcuts rows"
                                         value={shortcutRows.toString()}
@@ -193,8 +193,8 @@ export default function Footer({ showShortcuts, setShowShortcuts, showStories, s
                                     onChange={setShowStories}
                                 />
                                 <div className="flex-1">
-                                    <h3>Recommended stories</h3>
-                                    <h4 className=" text-gray-400 my-1">Exceptional content curated by the firefox family</h4>
+                                    <h3 className="text-xs sm:text-base">Recommended stories</h3>
+                                    <h4 className="text-gray-400 my-1 text-xs sm:text-sm">Exceptional content curated by the firefox family</h4>
                                 </div>
                             </div>
                             <hr className="mt-7 mb-10 border-gray-700" />

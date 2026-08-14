@@ -61,20 +61,20 @@ export default function Shortcuts({ rows = 1, shortcuts, setShortcuts }: Shortcu
     const maxItems = rows * 6;
 
     return (
-        <div className="flex justify-center mt-4">
-            <div className="grid grid-cols-6 gap-6 w-200 justify-items-center">
+<div className="flex justify-center mt-4 px-4">
+            <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4 lg:gap-6 w-full max-w-5xl justify-items-center">
                 {shortcuts.slice(0, maxItems).map((s, idx) => (
                     <Shortcut key={idx} name={s.name} url={s.url} img={s.img} onDelete={() => onDelete(s.name)} onEdit={() => onEdit(s.name)} />
                 ))}
 
                 {shortcuts.length < maxItems && (
                     <div className="flex flex-col items-center">
-                        <button type="button" onClick={() => setOpen(true)} className="w-16 h-16 rounded-full bg-[#2B2A3A] flex items-center justify-center mt-10 mr-4 ml-4 shadow-lg hover:shadow-2xl hover:scale-120 hover:bg-[#423A5A] transition-all duration-200 border-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#2B2A3A]">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 -960 960 960" fill="#e3e3e3">
+                        <button type="button" onClick={() => setOpen(true)} className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-[#2B2A3A] flex items-center justify-center mt-6 sm:mt-10 mx-2 sm:mx-4 shadow-lg hover:shadow-2xl hover:scale-120 hover:bg-[#423A5A] transition-all duration-200 border-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#2B2A3A]">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 sm:w-8 sm:h-8" viewBox="0 -960 960 960" fill="#e3e3e3">
                                 <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
                             </svg>
                         </button>
-                        <p className="text-white text-sm mt-2 font-medium">Add</p>
+                        <p className="text-white text-xs sm:text-sm mt-2 font-medium">Add</p>
                     </div>
                 )}
             </div>

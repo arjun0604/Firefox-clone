@@ -35,7 +35,7 @@ export default function NewsFetch() {
 
     if (loading) {
         return (
-            <div className="grid grid-cols-4 gap-7 relative w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 relative w-full">
                 {Array.from({ length: 12 }).map((_, i) => (
                     <div key={i} className="rounded-3xl bg-[#312B47] flex flex-col h-70 overflow-hidden">
                         <Skeleton className="h-40 w-full bg-gray-600/50 rounded-none" />
@@ -58,7 +58,7 @@ export default function NewsFetch() {
     }
 
     return (
-        <div className="grid grid-cols-4 gap-7 relative">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 relative">
             {articles.map((article, index) => {
                 const cleanTitle = article.title.split(" - ").slice(0, -1).join(" - ");
                 const domain = new URL(article.url).hostname;
