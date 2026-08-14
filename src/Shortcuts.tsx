@@ -34,13 +34,22 @@ export default function Shortcuts({ rows = 1, shortcuts, setShortcuts }: Shortcu
         }
     };
 
+    const onDelete = (nameToDelete: string) => {
+        setShortcuts(shortcuts.filter(s => s.name !== nameToDelete));
+    }
+
+    const onEdit = (nameToEdit: string) => {
+        console.log("To be edited : ", nameToEdit);
+    }
+    
+
     const maxItems = rows * 6;
 
     return (
         <div className="flex justify-center mt-4">
             <div className="grid grid-cols-6 gap-6 w-[800px] justify-items-center">
                 {shortcuts.slice(0, maxItems).map((s, idx) => (
-                    <Shortcut key={idx} name={s.name} url={s.url} img={s.img} />
+                    <Shortcut key={idx} name={s.name} url={s.url} img={s.img} onDelete={() => onDelete(s.name)} onEdit={() => onEdit(s.name)}/>
                 ))}
 
                 {shortcuts.length < maxItems && (
