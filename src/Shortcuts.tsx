@@ -55,13 +55,12 @@ export default function Shortcuts({ rows = 1, shortcuts, setShortcuts }: Shortcu
             setShortcuts(shortcuts.map((s, i) => i === editIndex ? editShortcut : s));
             setEditOpen(false);
         }
-    }
-
+    };
 
     const maxItems = rows * 6;
 
     return (
-<div className="flex justify-center mt-4 px-4">
+        <div className="flex justify-center mt-4 px-4">
             <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4 lg:gap-6 w-full max-w-5xl justify-items-center">
                 {shortcuts.slice(0, maxItems).map((s, idx) => (
                     <Shortcut key={idx} name={s.name} url={s.url} img={s.img} onDelete={() => onDelete(s.name)} onEdit={() => onEdit(s.name)} />
@@ -127,4 +126,3 @@ export default function Shortcuts({ rows = 1, shortcuts, setShortcuts }: Shortcu
         </div>
     );
 }
-

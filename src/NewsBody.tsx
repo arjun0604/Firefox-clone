@@ -6,7 +6,7 @@ export default function NewsBody() {
             <div className="flex flex-col w-full max-w-7xl mt-12 mb-20">
                 <h1 className="text-white font-bold text-lg">Thought-provoking stories</h1>
                 <br></br>
-                <div className="flex column justify-center">
+                <div className="flex justify-center">
                     <NewsFetch />
                 </div>
             </div>

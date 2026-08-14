@@ -1,4 +1,3 @@
-"use client"
 import { PencilIcon, TrashIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
@@ -7,7 +6,6 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-  
 
 interface ShortcutProps {
     name: string;
@@ -22,7 +20,7 @@ function Shortcut({ name, url, img, onDelete, onEdit }: ShortcutProps) {
         <div className="group relative flex flex-col items-center">
             <div className="absolute top-5 right-2">
                 <DropdownMenuTrigger>
-                    <Button className="bg-transparent border-0 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white/20 hover:text-white rounded-full w-8 h-8 p-0"variant="ghost">...</Button>
+                    <Button className="bg-transparent border-0 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white/20 hover:text-white rounded-full w-8 h-8 p-0" variant="ghost">...</Button>
                     <DropdownMenu className="bg-gray-700 border-gray-700 text-white shadow-xl">
                         <DropdownMenuGroup>
                             <DropdownMenuItem className="hover:bg-[#423A5A] focus:bg-[#423A5A] hover:text-white focus:text-white cursor-pointer" onAction={() => onEdit()}>
