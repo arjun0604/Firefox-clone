@@ -79,7 +79,7 @@ export default function Footer({ showShortcuts, setShowShortcuts, showStories, s
                     </svg>
                     Customize
                 </DrawerTrigger>
-                <DrawerContent className="bg-[#2B2A3A] text-white border-gray-800 w-full sm:w-[500px]">
+                <DrawerContent className="bg-[#2B2A3A] text-white border-gray-800 w-full sm:w-125">
                     <DrawerClose className="absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none disabled:pointer-events-none cursor-pointer p-1">
                         <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" /></svg>
                         <span className="sr-only">Close</span>
@@ -171,7 +171,7 @@ export default function Footer({ showShortcuts, setShowShortcuts, showStories, s
                                     <h3>Shortcuts</h3>
                                     <h4 className=" text-gray-400 my-1">Sites you save or visit</h4>
                                     <select
-                                        className="my-1 p-2 w-37 text-white custom-select border-1 border-gray-400 rounded bg-transparent"
+                                        className="my-1 p-2 w-37 text-white custom-select border border-gray-400 rounded bg-transparent"
                                         name="shortcut"
                                         aria-label="Shortcuts rows"
                                         value={shortcutRows.toString()}

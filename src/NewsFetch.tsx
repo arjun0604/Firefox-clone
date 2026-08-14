@@ -37,7 +37,7 @@ export default function NewsFetch() {
         return (
             <div className="grid grid-cols-4 gap-7 relative w-full">
                 {Array.from({ length: 12 }).map((_, i) => (
-                    <div key={i} className="rounded-3xl bg-[#312B47] flex flex-col h-[280px] overflow-hidden">
+                    <div key={i} className="rounded-3xl bg-[#312B47] flex flex-col h-70 overflow-hidden">
                         <Skeleton className="h-40 w-full bg-gray-600/50 rounded-none" />
                         <div className="p-3 flex-1 flex flex-col gap-2">
                             <Skeleton className="h-4 w-full bg-gray-600/50" />
