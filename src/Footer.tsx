@@ -7,8 +7,19 @@ import {
     DrawerTrigger,
     DrawerClose,
 } from "@/components/ui/drawer"
+import { Switch } from "@/components/ui/switch"
 
-export default function Footer() {
+interface FooterProps {
+    showShortcuts: boolean;
+    setShowShortcuts: (val: boolean) => void;
+    showStories: boolean;
+    setShowStories: (val: boolean) => void;
+    shortcutRows: number;
+    setShortcutRows: (val: number) => void;
+    maxRows: number;
+}
+
+export default function Footer({ showShortcuts, setShowShortcuts, showStories, setShowStories, shortcutRows, setShortcutRows, maxRows }: FooterProps) {
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     const applyBackground = (url: string | null) => {
@@ -148,8 +159,46 @@ export default function Footer() {
                                     <h3 className="mt-3 text-center text-sm font-medium text-gray-300 font-sans tracking-wide">Upload Image</h3>
                                 </button>
                             </div>
-                            <hr className="my-6 border-gray-700" />
-                            <p className="text-gray-400">Background change controls will go here.</p>
+                            <hr className="mt-7 mb-10 border-gray-700" />
+                            <div className="flex gap-4 w-full">
+                                <Switch
+                                    id="shortcuts-toggle"
+                                    className="mt-1 data-selected:bg-green-500 data-checked:bg-green-500"
+                                    isSelected={showShortcuts}
+                                    onChange={setShowShortcuts}
+                                />
+                                <div className="flex-1">
+                                    <h3>Shortcuts</h3>
+                                    <h4 className=" text-gray-400 my-1">Sites you save or visit</h4>
+                                    <select
+                                        className="my-1 p-2 w-37 text-white custom-select border-1 border-gray-400 rounded bg-transparent"
+                                        name="shortcut"
+                                        aria-label="Shortcuts rows"
+                                        value={shortcutRows.toString()}
+                                        onChange={(e) => setShortcutRows(Number(e.target.value))}
+                                    >
+                                        {Array.from({ length: maxRows }).map((_, i) => (
+                                            <option key={i + 1} value={i + 1}>
+                                                {i + 1} Row{i > 0 ? 's' : ''}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                            </div>
+                            <div className="flex gap-4 mt-7 w-full">
+                                <Switch
+                                    id="stories-toggle"
+                                    className="mt-1 data-selected:bg-green-500 data-checked:bg-green-500"
+                                    isSelected={showStories}
+                                    onChange={setShowStories}
+                                />
+                                <div className="flex-1">
+                                    <h3>Recommended stories</h3>
+                                    <h4 className=" text-gray-400 my-1">Exceptional content curated by the firefox family</h4>
+                                </div>
+                            </div>
+                            <hr className="mt-7 mb-10 border-gray-700" />
+                            <a className="cursor-pointer text-sm text-gray-400 hover:text-white transition-colors">Manage more Settings</a>
                         </div>
                     </div>
                 </DrawerContent>
