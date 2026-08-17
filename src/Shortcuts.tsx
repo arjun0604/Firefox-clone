@@ -89,7 +89,7 @@ export default function Shortcuts({ rows = 1, shortcuts, setShortcuts }: Shortcu
                     </div>
                     <div className="grid grid-cols-4 items-center gap-4">
                         <Label htmlFor="add-url" className="text-right">Site URL</Label>
-                        <Input id="add-url" value={newShortcut.url} onChange={(e) => setNewShortcut({ ...newShortcut, url: e.target.value })} className="col-span-3 bg-[#1C1B22] border-gray-700 text-white" placeholder="https://github.com" />
+                        <Input id="add-url" value={newShortcut.url} onChange={(e) => setNewShortcut({ ...newShortcut, url: e.target.value })} className="col-span-3 bg-[#1C1B22] border-gray-700 text-white" placeholder="https://www.github.com" />
                     </div>
                     <div className="grid grid-cols-4 items-center gap-4">
                         <Label htmlFor="add-img" className="text-right">Image URL</Label>
