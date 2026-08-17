@@ -50,7 +50,15 @@ function App() {
   useEffect(() => {
     localStorage.setItem("firefox-shortcut-rows", JSON.stringify(shortcutRows));
   }, [shortcutRows]);
-  
+
+  useEffect(() => {
+    const savedWallpaper = localStorage.getItem("firefox-wallpaper");
+    if (savedWallpaper) {
+      document.documentElement.style.background = `url('${savedWallpaper}') center/cover no-repeat fixed`;
+      document.body.style.background = "transparent";
+    }
+  }, []);
+
   const maxRows = Math.ceil((shortcuts.length + 1) / 6);
 
   return (

@@ -34,8 +34,9 @@ firefox-clone/
 │   ├── Shortcuts.tsx        # Shortcuts grid and modal dialogs
 │   ├── Shortcut.tsx         # Individual shortcut item with action menu
 │   ├── NewsBody.tsx         # News section container
-│   ├── NewsFetch.tsx        # News API fetcher and article cards
-│   ├── Footer.tsx           # Customization drawer and wallpaper controls
+│   ├── Footer.tsx           # Customization drawer container
+│   ├── WallpaperPicker.tsx  # Preset & custom wallpaper picker
+│   ├── DrawerSettings.tsx   # Shortcuts & stories toggle settings
 │   ├── main.tsx             # Application entry point
 │   └── index.css            # Global styles and Tailwind configuration
 ├── public/                  # Static assets

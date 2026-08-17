@@ -23,11 +23,11 @@ function Shortcut({ name, url, img, onDelete, onEdit }: ShortcutProps) {
                     <Button className="bg-transparent border-0 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white/20 hover:text-white rounded-full w-8 h-8 p-0" variant="ghost">...</Button>
                     <DropdownMenu className="bg-gray-700 border-gray-700 text-white shadow-xl">
                         <DropdownMenuGroup>
-                            <DropdownMenuItem className="hover:bg-[#423A5A] focus:bg-[#423A5A] hover:text-white focus:text-white cursor-pointer" onAction={() => onEdit()}>
-                                <PencilIcon />
+                            <DropdownMenuItem className="text-white hover:bg-[#423A5A] focus:bg-[#423A5A] focus:text-white cursor-pointer" onAction={() => onEdit()}>
+                                <PencilIcon color="white" />
                                 Edit
                             </DropdownMenuItem>
-                            <DropdownMenuItem onAction={() => onDelete()} variant="destructive" className="hover:bg-red-900/30 focus:bg-red-900/30 text-red-500 cursor-pointer">
+                            <DropdownMenuItem onAction={() => onDelete()} variant="destructive" className="text-red-500 cursor-pointer">
                                 <TrashIcon />
                                 Delete
                             </DropdownMenuItem>
