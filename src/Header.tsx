@@ -1,5 +1,4 @@
 import { useState, type KeyboardEvent } from "react";
-import firefoxLogo from "./assets/firefox_logo.svg";
 import googleLogo from "./assets/Google_round.png";
 
 function Header(){
@@ -13,10 +12,16 @@ function Header(){
 
     return(
         <>  
-            <img 
-                src={firefoxLogo} 
-                className="w-32 h-14 m-5"
-            />
+            <div className="flex items-center gap-3 m-5">
+                <img 
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Firefox_logo%2C_2019.svg/960px-Firefox_logo%2C_2019.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail" 
+                    alt="Firefox Logo"
+                    className="w-9 h-9 sm:w-10 sm:h-10 object-contain select-none"
+                />
+                <span className="text-white text-2xl sm:text-[26px] font-bold tracking-tight select-none font-brand">
+                    Firefox
+                </span>
+            </div>
         <div className="flex justify-center mt-4">
                 <div className="relative w-full max-w-2xl px-4">
                     <img 
