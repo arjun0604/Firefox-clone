@@ -1,16 +1,39 @@
+import {useEffect} from "react"
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { ArrowLeft, ExternalLink, Calendar, User } from "lucide-react";
+import { useAppSelector, useAppDispatch } from "../store/hooks";
+import { fetchNews } from "../store/newSlice";
+
+
+function stripHtml(text: string): string {
+    return text
+        .replace(/<[^>]*>/g, " ")
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'")
+        .replace(/&amp;/g, "&")
+        .replace(/\[\+\d+\s+chars\]/, "")
+        .replace(/\s+/g, " ")
+        .trim();
+}
 
 export default function NewsPage() {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
     const location = useLocation();
+    const dispatch = useAppDispatch();
+    const articles = useAppSelector((state)=>state.news.article);
 
-    const article = location.state?.article;
+    useEffect(() => {
+        if (articles.length === 0) {
+          dispatch(fetchNews());
+        }
+    }, [dispatch, articles.length]);
+    
+    const index=id ? parseInt(id,10):0;
+    const article=articles[index] || location.state?.article;
 
-    const cleanContent = article?.content 
-        ? article.content.replace(/\[\+\d+\s+chars\]/, "") 
-        : "";
+    const rawText = article?.content || article?.description || "No full content available.";
+    const cleanStoryText = stripHtml(rawText);
 
     const formattedDate = article?.publishedAt 
         ? new Date(article.publishedAt).toLocaleDateString("en-US", {
@@ -82,7 +105,7 @@ export default function NewsPage() {
                 
                 <div className="text-lg sm:text-xl text-gray-800 leading-relaxed font-normal space-y-4 mb-10">
                     <p>
-                        {cleanContent || article?.description || "No full content available."}
+                        {cleanStoryText}
                     </p>
                 </div>
 

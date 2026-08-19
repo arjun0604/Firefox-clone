@@ -2,6 +2,10 @@ import { useState, useEffect } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Link } from 'react-router-dom';
 import { getHeadlines} from "./api/NewsService";
+import { useAppDispatch, useAppSelector } from './store/hooks';
+import { fetchNews } from './store/newSlice';
+
+
 export interface Article {
     title: string;
     url: string;
@@ -15,9 +19,11 @@ export interface Article {
 
 
 export default function NewsFetch() {
-    const [articles, setArticles] = useState<Article[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null);
+
+    const dispatch=useAppDispatch();
+    const {article: articles, loading, error} = useAppSelector((state)=>state.news);
+
+    
 
     const validateImage = (url: string): Promise<boolean> => {
         return new Promise((resolve) => {
@@ -30,35 +36,10 @@ export default function NewsFetch() {
       };
       
     useEffect(() => {
-        async function fetchdata() {
-            try {
-                setLoading(true);
-                setError(null);
-                
-                const rawArticles = await getHeadlines();
-                  
-        
-                const validatedArticles = await Promise.all(
-                    rawArticles.map(async (article: Article) => {
-                        const isValid = await validateImage(article.urlToImage);
-                        return isValid ? article : null;
-                    })
-                );
-                  
-                setArticles(
-                    validatedArticles
-                        .filter((article): article is Article => article !== null)
-                        .slice(0, 16)
-                );
-                  
-            } catch (err) {
-                setError(err instanceof Error ? err.message : "Failed to load news");
-            } finally {
-                setLoading(false);
-            }
+        if (articles.length===0){
+            dispatch(fetchNews());
         }
-        fetchdata();
-    }, []);
+    }, [dispatch,articles.length]);
     
 
     if (loading) {
