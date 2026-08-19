@@ -4,6 +4,12 @@
 @import "@fontsource-variable/inter";
 @import url('https://fonts.cdnfonts.com/css/metropolis');
 
+
+html, body {
+    overscroll-behavior-y: none;
+    min-height: 100vh;
+}
+
 body {
     background-color: #440A54;
     color: white;

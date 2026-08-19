@@ -1,17 +1,34 @@
-import { useState, useEffect } from "react"
-import { Skeleton } from "@/components/ui/skeleton"
+import { useState, useEffect } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Link } from 'react-router-dom';
 
-interface Article {
+export interface Article {
     title: string;
     url: string;
     urlToImage: string;
+    description?: string;
+    content?: string;
+    author?: string;
+    publishedAt?: string;
     source: { name: string };
 }
+
 
 export default function NewsFetch() {
     const [articles, setArticles] = useState<Article[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+
+    const validateImage = (url: string): Promise<boolean> => {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.referrerPolicy = "no-referrer";
+          img.src = url;
+          img.onload = () => resolve(true);
+          img.onerror = () => resolve(false);
+        });
+      };
+      
 
     useEffect(() => {
         async function fetchdata() {
@@ -21,9 +38,23 @@ export default function NewsFetch() {
                     throw new Error("Data could not be loaded");
                 }
                 const responseData = await response.json();
-                setArticles(responseData.articles.filter((article: Article) =>
-                    article.title !== "[Removed]" && article.urlToImage
-                ).slice(0, 12));
+                const initialArticles = responseData.articles.filter(
+                    (article: Article) => article.title !== "[Removed]" && article.urlToImage
+                );
+                  
+                const validatedArticles = await Promise.all(
+                    initialArticles.map(async (article: Article) => {
+                        const isValid = await validateImage(article.urlToImage);
+                        return isValid ? article : null;
+                    })
+                );
+                  
+                setArticles(
+                    validatedArticles
+                    .filter((article): article is Article => article !== null)
+                    .slice(0, 16)
+                );
+                  
             } catch (err) {
                 setError(err instanceof Error ? err.message : "Unknown error");
             } finally {
@@ -62,16 +93,21 @@ export default function NewsFetch() {
             {articles.map((article, index) => {
                 const cleanTitle = article.title.split(" - ").slice(0, -1).join(" - ");
                 const domain = new URL(article.url).hostname;
-                const faviconUrl = `https://www.google.com/s2/favicons?domain=${domain}&sz=32`;
+                const faviconUrl = `https://icons.duckduckgo.com/ip3/${domain}.ico`;
                 return (
-                    <a key={index} href={article.url} target="_blank" rel="noopener noreferrer" className="rounded-3xl bg-[#312B47] flex flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#2B2A3A]">
-                        <img src={article.urlToImage} alt={cleanTitle} className="rounded-t-2xl h-40 w-full object-cover" />
+                    <Link 
+                        key={index} 
+                        to={`/news/${index}`} 
+                        state={{ article }} 
+                        className="rounded-3xl bg-[#312B47] flex flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#2B2A3A]"
+                    >
+                        <img src={article.urlToImage} alt={cleanTitle} referrerPolicy="no-referrer" className="rounded-t-2xl h-40 w-full object-cover" />
                         <h2 className="pt-3 pr-3 pl-3 font-bold flex-1">{cleanTitle}</h2>
                         <div className="flex items-center gap-2 p-3 pt-2">
                             <img src={faviconUrl} alt={article.source.name} className="w-5 h-5 rounded-full" />
                             <p title={article.source.name} className="text-sm text-gray-300">{article.source.name}</p>
                         </div>
-                    </a>
+                    </Link>
                 );
             })}
         </div>
