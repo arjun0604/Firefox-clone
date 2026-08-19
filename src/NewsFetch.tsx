@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Link } from 'react-router-dom';
-
+import { getHeadlines} from "./api/NewsService";
 export interface Article {
     title: string;
     url: string;
@@ -29,21 +29,17 @@ export default function NewsFetch() {
         });
       };
       
-
     useEffect(() => {
         async function fetchdata() {
             try {
-                const response = await fetch("/api/news/v2/top-headlines?country=us&apiKey=0645a4d0f53a44c5b0a1cf1fabfbe8a6");
-                if (!response.ok) {
-                    throw new Error("Data could not be loaded");
-                }
-                const responseData = await response.json();
-                const initialArticles = responseData.articles.filter(
-                    (article: Article) => article.title !== "[Removed]" && article.urlToImage
-                );
+                setLoading(true);
+                setError(null);
+                
+                const rawArticles = await getHeadlines();
                   
+        
                 const validatedArticles = await Promise.all(
-                    initialArticles.map(async (article: Article) => {
+                    rawArticles.map(async (article: Article) => {
                         const isValid = await validateImage(article.urlToImage);
                         return isValid ? article : null;
                     })
@@ -51,18 +47,19 @@ export default function NewsFetch() {
                   
                 setArticles(
                     validatedArticles
-                    .filter((article): article is Article => article !== null)
-                    .slice(0, 16)
+                        .filter((article): article is Article => article !== null)
+                        .slice(0, 16)
                 );
                   
             } catch (err) {
-                setError(err instanceof Error ? err.message : "Unknown error");
+                setError(err instanceof Error ? err.message : "Failed to load news");
             } finally {
                 setLoading(false);
             }
         }
         fetchdata();
     }, []);
+    
 
     if (loading) {
         return (
@@ -85,8 +82,28 @@ export default function NewsFetch() {
     }
 
     if (error) {
-        return <p className="text-center py-6 text-red-500">Failed to load news: {error}</p>;
+        return (
+            <div className="flex justify-center my-6">
+                <div className="bg-[#1c1b22] text-white p-6 rounded-2xl text-center max-w-md w-full border border-white/20 shadow-lg">
+                    <h3 className="font-semibold text-lg mb-2 text-red-400">
+                        Failed to Load News
+                    </h3>
+                    <p className="text-sm text-gray-300 mb-4">
+                        {error}
+                    </p>
+                    <button 
+                        onClick={() => window.location.reload()} 
+                        className="bg-white/10 hover:bg-white/20 text-white text-sm px-4 py-2 rounded-xl transition cursor-pointer border border-white/10"
+                    >
+                        Try Again
+                    </button>
+                </div>
+            </div>
+        );
     }
+    
+    
+    
 
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 relative">

@@ -1,5 +1,5 @@
 import { useParams, useNavigate, useLocation } from "react-router-dom";
-import { ArrowLeft, ExternalLink, Calendar, User, Globe } from "lucide-react";
+import { ArrowLeft, ExternalLink, Calendar, User } from "lucide-react";
 
 export default function NewsPage() {
     const { id } = useParams<{ id: string }>();
