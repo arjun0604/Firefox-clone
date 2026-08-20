@@ -18,9 +18,9 @@ interface ShortcutProps {
 function Shortcut({ name, url, img, onDelete, onEdit }: ShortcutProps) {
     return (
         <div className="group relative flex flex-col items-center">
-            <div className="absolute top-5 right-2">
+            <div className="absolute top-5 right-2 z-20">
                 <DropdownMenuTrigger>
-                    <Button className="bg-transparent border-0 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white/20 hover:text-white rounded-full w-8 h-8 p-0" variant="ghost">...</Button>
+                    <Button className="bg-transparent border-0 text-black opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white/20 hover:text-black rounded-full w-8 h-8 p-0" variant="ghost">...</Button>
                     <DropdownMenu className="bg-gray-700 border-gray-700 text-white shadow-xl">
                         <DropdownMenuGroup>
                             <DropdownMenuItem className="text-white hover:bg-[#423A5A] focus:bg-[#423A5A] focus:text-white cursor-pointer" onAction={() => onEdit()}>

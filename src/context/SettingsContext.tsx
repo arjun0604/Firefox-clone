@@ -90,20 +90,20 @@ export function SettingsProvider({children}:{children: React.ReactNode})
 
   return(
     <SettingsContext.Provider
-    value={{
-        wallpaper,
-        setWallpaper,
-        showShortcuts,
-        setShowShortcuts,
-        showStories,
-        setShowStories,
-        shortcutRows,
-        setShortcutRows,
-        shortcuts,
-        setShortcuts,
-    }}
+      value={{
+          wallpaper,
+          setWallpaper,
+          showShortcuts,
+          setShowShortcuts,
+          showStories,
+          setShowStories,
+          shortcutRows,
+          setShortcutRows,
+          shortcuts,
+          setShortcuts,
+      }}
     >
-        {children}
+      {children}
     </SettingsContext.Provider>
   );
 }
