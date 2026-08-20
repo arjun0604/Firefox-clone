@@ -1,43 +1,22 @@
-import React, { useState, useEffect, useRef } from "react"
+import { useSettings } from "./context/SettingsContext";
+import React, { useState, useRef } from "react"
 import { DrawerHeader, DrawerTitle } from "@/components/ui/drawer"
 
 export default function WallpaperPicker() {
     const fileInputRef = useRef<HTMLInputElement>(null);
+    const { setWallpaper } = useSettings();
+
     const [customWallpapers, setCustomWallpapers] = useState<string[]>(() => {
         const saved = localStorage.getItem("firefox-custom-wallpapers");
         return saved ? JSON.parse(saved) : [];
     });
 
-    const applyBackground = (url: string | null) => {
-        if (url) {
-            document.documentElement.style.background = `url('${url}') center/cover no-repeat fixed`;
-            document.body.style.background = "transparent";
-        } else {
-            document.documentElement.style.background = "";
-            document.body.style.background = "";
-        }
-    };
-
-    useEffect(() => {
-        const saved = localStorage.getItem("firefox-wallpaper");
-        if (saved) {
-            applyBackground(saved);
-        }
-    }, []);
-
     const handleWallpaperSelect = (url: string) => {
-        try {
-            localStorage.setItem("firefox-wallpaper", url);
-            applyBackground(url);
-        } catch (e) {
-            console.error("Failed to save wallpaper to local storage. It might be too large.", e);
-            applyBackground(url);
-        }
+        setWallpaper(url);
     };
 
     const handleReset = () => {
-        localStorage.removeItem("firefox-wallpaper");
-        applyBackground(null);
+        setWallpaper(null);
     };
 
     const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {

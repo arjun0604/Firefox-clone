@@ -7,25 +7,7 @@ import {
 import WallpaperPicker from "./WallpaperPicker"
 import DrawerSettings from "./DrawerSettings"
 
-interface FooterProps {
-    showShortcuts: boolean;
-    setShowShortcuts: (val: boolean) => void;
-    showStories: boolean;
-    setShowStories: (val: boolean) => void;
-    shortcutRows: number;
-    setShortcutRows: (val: number) => void;
-    maxRows: number;
-}
-
-export default function Footer({
-    showShortcuts,
-    setShowShortcuts,
-    showStories,
-    setShowStories,
-    shortcutRows,
-    setShortcutRows,
-    maxRows
-}: FooterProps) {
+export default function Footer(){
     return (
         <div className="fixed bottom-6 right-7">
             <Drawer swipeDirection="right">
@@ -45,15 +27,7 @@ export default function Footer({
                     <div className="flex flex-col mx-auto w-full px-2 sm:px-6 mt-10 sm:mt-15">
                         <WallpaperPicker />
                         <hr className="mt-7 mb-7 border-gray-700 mx-2 sm:mx-4" />
-                        <DrawerSettings
-                            showShortcuts={showShortcuts}
-                            setShowShortcuts={setShowShortcuts}
-                            showStories={showStories}
-                            setShowStories={setShowStories}
-                            shortcutRows={shortcutRows}
-                            setShortcutRows={setShortcutRows}
-                            maxRows={maxRows}
-                        />
+                        <DrawerSettings />
                     </div>
                 </DrawerContent>
             </Drawer>

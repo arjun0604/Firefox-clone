@@ -1,24 +1,19 @@
-import { Switch } from "@/components/ui/switch"
+import { Switch } from "@/components/ui/switch";
+import { useSettings } from "./context/SettingsContext";
 
-interface DrawerSettingsProps {
-    showShortcuts: boolean;
-    setShowShortcuts: (val: boolean) => void;
-    showStories: boolean;
-    setShowStories: (val: boolean) => void;
-    shortcutRows: number;
-    setShortcutRows: (val: number) => void;
-    maxRows: number;
-}
+export default function DrawerSettings(){
+    const{
+        showShortcuts,
+        setShowShortcuts,
+        showStories,
+        setShowStories,
+        shortcutRows,
+        setShortcutRows,
+        shortcuts
+    } = useSettings();
 
-export default function DrawerSettings({
-    showShortcuts,
-    setShowShortcuts,
-    showStories,
-    setShowStories,
-    shortcutRows,
-    setShortcutRows,
-    maxRows
-}: DrawerSettingsProps) {
+    const maxRows = Math.ceil((shortcuts.length + 1) / 6);
+
     return (
         <div className="p-2 sm:p-4 pt-0">
             <div className="flex gap-4 w-full">
