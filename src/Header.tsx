@@ -4,9 +4,11 @@ import googleLogo from "./assets/Google_round.png";
 function Header(){
     const [query, setQuery] = useState("");
 
+
     const handleSearch = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter" && query.trim()) {
             window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, "_blank");
+            setQuery('');
         }
     };
 

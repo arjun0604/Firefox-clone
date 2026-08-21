@@ -8,21 +8,12 @@ export default function HomePage(){
   const {
     showShortcuts,
     showStories,
-    shortcutRows,
-    shortcuts,
-    setShortcuts,
   } = useSettings();
 
   return (
     <div className="overscroll-y-none">
       <Header />
-      {showShortcuts && (
-        <Shortcuts
-          rows={shortcutRows}
-          shortcuts={shortcuts}
-          setShortcuts={setShortcuts}
-        />
-      )}
+      {showShortcuts && <Shortcuts/>}
       {showStories && <NewsBody />}
       <Footer />
     </div>

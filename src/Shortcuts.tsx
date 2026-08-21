@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Shortcut from "./Shortcut";
+import { useSettings, ShortcutItem } from "./context/SettingsContext"
 import {
     Dialog,
     DialogHeader,
@@ -10,23 +11,15 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 
-interface ShortcutData {
-    name: string;
-    url: string;
-    img: string;
-}
 
-interface ShortcutsProps {
-    rows?: number;
-    shortcuts: ShortcutData[];
-    setShortcuts: (s: ShortcutData[]) => void;
-}
+export default function Shortcuts() {
 
-export default function Shortcuts({ rows = 1, shortcuts, setShortcuts }: ShortcutsProps) {
+    const { shortcuts, setShortcuts, shortcutRows: rows } = useSettings();
+
     const [open, setOpen] = useState(false);
-    const [newShortcut, setNewShortcut] = useState<ShortcutData>({ name: "", url: "", img: "" });
+    const [newShortcut, setNewShortcut] = useState<ShortcutItem>({ name: "", url: "", img: "" });
     const [editOpen, setEditOpen] = useState(false);
-    const [editShortcut, setEditShortcut] = useState<ShortcutData>({ name: "", url: "", img: "" });
+    const [editShortcut, setEditShortcut] = useState<ShortcutItem>({ name: "", url: "", img: "" });
     const [editIndex, setEditIndex] = useState<number>(-1);
 
     const handleAdd = () => {

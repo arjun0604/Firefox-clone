@@ -1,40 +1,14 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Link } from 'react-router-dom';
-import { getHeadlines} from "./api/NewsService";
 import { useAppDispatch, useAppSelector } from './store/hooks';
 import { fetchNews } from './store/newSlice';
-
-
-export interface Article {
-    title: string;
-    url: string;
-    urlToImage: string;
-    description?: string;
-    content?: string;
-    author?: string;
-    publishedAt?: string;
-    source: { name: string };
-}
-
 
 export default function NewsFetch() {
 
     const dispatch=useAppDispatch();
     const {article: articles, loading, error} = useAppSelector((state)=>state.news);
-
     
-
-    const validateImage = (url: string): Promise<boolean> => {
-        return new Promise((resolve) => {
-          const img = new Image();
-          img.referrerPolicy = "no-referrer";
-          img.src = url;
-          img.onload = () => resolve(true);
-          img.onerror = () => resolve(false);
-        });
-      };
-      
     useEffect(() => {
         if (articles.length===0){
             dispatch(fetchNews());
